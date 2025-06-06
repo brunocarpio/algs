@@ -80,3 +80,56 @@ func MaxSubArray(nums []int) int {
 
 	return maxSum
 }
+
+func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	l1 := len(nums1)
+	l2 := len(nums2)
+
+	mid := (l1 + l2 - 1) / 2
+
+	if l1 == 0 {
+		if (l1+l2)%2 == 0 {
+			return (float64(nums2[mid]) + float64(nums2[mid+1])) / 2
+		} else {
+			return float64(nums2[mid])
+		}
+	}
+
+	if l2 == 0 {
+		if (l1+l2)%2 == 0 {
+			return (float64(nums1[mid]) + float64(nums1[mid+1])) / 2
+		} else {
+			return float64(nums1[mid])
+		}
+	}
+
+	nums3 := []int{}
+
+	i := 0
+	j := 0
+	for true {
+		if j >= l2 {
+			nums3 = append(nums3, nums1[i:]...)
+			break
+		} else if i >= l1 {
+			nums3 = append(nums3, nums2[j:]...)
+			break
+		} else {
+			if nums1[i] <= nums2[j] {
+				nums3 = append(nums3, nums1[i])
+				i++
+			} else {
+				nums3 = append(nums3, nums2[j])
+				j++
+			}
+		}
+
+	}
+
+	if (l1+l2)%2 == 0 {
+		return (float64(nums3[mid]) + float64(nums3[mid+1])) / 2
+	} else {
+		return float64(nums3[mid])
+	}
+
+}

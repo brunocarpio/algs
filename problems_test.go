@@ -29,3 +29,7 @@ func TestMaxSubArray(t *testing.T) {
 	assert.Equal(t, -1, MaxSubArray([]int{-2, -1}))
 	assert.Equal(t, 1, MaxSubArray([]int{1, -2, -2, -1}))
 }
+
+func TestFindMedianSortedArrays(t *testing.T) {
+	assert.Equal(t, 0.0, FindMedianSortedArrays([]int{0, 0, 0, 0, 0}, []int{-1, 0, 0, 0, 0, 0, 1}))
+}
