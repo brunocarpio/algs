@@ -133,3 +133,27 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	}
 
 }
+
+func LengthOfLongestSubstring(s string) int {
+	byteCount := map[byte]int{}
+
+	max := 0
+	i := 0
+	j := 0
+
+	for i = 0; i < len(s); i++ {
+		if _, ok := byteCount[s[i]]; !ok {
+			byteCount[s[i]] = 1
+		} else {
+			clear(byteCount)
+			j++
+			i = j
+			byteCount[s[i]] = 1
+		}
+		if len(byteCount) > max {
+			max = len(byteCount)
+		}
+	}
+
+	return max
+}

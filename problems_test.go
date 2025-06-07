@@ -33,3 +33,11 @@ func TestMaxSubArray(t *testing.T) {
 func TestFindMedianSortedArrays(t *testing.T) {
 	assert.Equal(t, 0.0, FindMedianSortedArrays([]int{0, 0, 0, 0, 0}, []int{-1, 0, 0, 0, 0, 0, 1}))
 }
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	assert.Equal(t, 3, LengthOfLongestSubstring("abcabcbb"))
+	assert.Equal(t, 1, LengthOfLongestSubstring("bbbbb"))
+	assert.Equal(t, 3, LengthOfLongestSubstring("pwwkew"))
+	assert.Equal(t, 4, LengthOfLongestSubstring("dvsdf"))
+	assert.Equal(t, 5, LengthOfLongestSubstring("qrsvbspk"))
+}
