@@ -141,13 +141,16 @@ func LengthOfLongestSubstring(s string) int {
 	i := 0
 	j := 0
 
-	for i = 0; i < len(s); i++ {
+	for i = range len(s) {
 		if _, ok := byteCount[s[i]]; !ok {
 			byteCount[s[i]] = 1
 		} else {
-			clear(byteCount)
+			for s[j] != s[i] {
+				delete(byteCount, s[j])
+				j++
+			}
+			delete(byteCount, s[j])
 			j++
-			i = j
 			byteCount[s[i]] = 1
 		}
 		if len(byteCount) > max {
